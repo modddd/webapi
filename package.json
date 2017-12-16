@@ -1,0 +1,23 @@
+{
+  "name": "webapi",
+  "version": "1.0.0",
+  "description": "Kamonchanok Ruangklai\r Nattaporn Thanomwat\r Sutita Chunoparat\r Panuwat Suthummaros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modddd/webapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/modddd/webapi/issues"
+  },
+  "homepage": "https://github.com/modddd/webapi#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
