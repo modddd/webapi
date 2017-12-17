@@ -83,6 +83,26 @@ router.put('/contactList/:id', (req,res)=>{
     res.json(tmp)
 })
 
+//ลบข้อมูล
+//Delete contactList
+router.delete('/contactList/:id', (req, res) => {
+    let selectId = req.params.id
+    var cont = []
+
+    for(var i=0; i<contactList.length;i++)
+    {
+      if(selectId == contactList[i].id)
+      {
+        contactList.splice(selectId, 1)
+        cont.push(contactList[i])
+      }
+    }
+    if(cont.length <= 0){
+        cont.push("Can't delete : your id doesn't match!!!")
+        res.json(cont)
+    }
+})
+
 //ค้นหาจากชื่อ(100%)
 //Search contactlist by firstname
 router.get('/contactList/:firstname', (req,res)=>{
