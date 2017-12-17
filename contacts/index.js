@@ -16,31 +16,29 @@ var contactList = [
     {id: 11, name: 'Petyr', last: 'Baelish', email: 'petyr@baelishindustries.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not trust anyone.'},
   ]
 
-//Show all contactList
-router.get('/contactList', (req,res)=>{
-    res.json(contactList)
-})
-
+//เพิ่มข้อมูล
 //Insert contactList
 router.post('/contactList', (req,res)=>{
-    let newContact = req.body
-    contactList.push(newContact)
-    newContact.create = '2017-11-24'
-    res.json(newContact)
-})
+    let newContactList = req.body
+    let flag = []
 
-//search by id
-router.get('/contactList/:id', (req,res)=>{
-    let id = res.params.id
-    let cont = contactList[id]
-    res.json(cont)
-})
-
-//search by name
-router.get('/contactList/:name', (req,res)=>{
-    let name = res.params.name
-    let cont = contactList[name]
-    res.json(cont)
+    if(newContactList.name != null && newContactList.last != null && newContactList.email != null){
+        contactList.push(newContactList)
+        newContactList.create = '2017-12-16'
+        flag.push(newContactList)
+    }
+    else{
+        if(newContactList.name == null){
+            flag.push("Please enter your firstname!!!")
+        }
+        if(newContactList.last == null){
+            flag.push("Please enter your lastname!!!")
+        }
+        if(newContactList.email == null){
+            flag.push("Please enter your email!!!")
+        }
+    }        
+    res.json(flag)
 })
 
 module.exports = router
