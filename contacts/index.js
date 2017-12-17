@@ -41,4 +41,46 @@ router.post('/contactList', (req,res)=>{
     res.json(flag)
 })
 
+//แก้ไขข้อมูล
+//Update contactList
+router.put('/contactList/:id', (req,res)=>{
+    let chooseID = req.params.id
+    let editer = req.body
+    let tmp = [{id: -1, name: '', last: '', email: '', phone: '', url: '', notes: ''}]
+   
+    if(editer.name != null && editer.last != null && editer.email != null){
+        tmp[0].id=parseInt(chooseID)
+        tmp[0].name=editer.name
+        tmp[0].last=editer.last
+        tmp[0].email=editer.email
+        tmp[0].phone=editer.phone
+        tmp[0].url=editer.url
+        tmp[0].notes=editer.notes
+
+        for(var i=0; i<contactList.length;i++)
+        {
+          if(chooseID == contactList[i].id)
+          {
+            contactList[i] = tmp
+          }
+        }
+
+    }
+    else{
+        if(editer.name == null){
+            tmp.push("Please enter your firstname!!!")
+        }
+        if(editer.last == null){
+            tmp.push("Please enter your lastname!!!")
+        }
+        if(editer.email == null){
+         tmp.push("Please enter your email!!!")
+        }
+        
+    }
+
+   
+    res.json(tmp)
+})
+
 module.exports = router
