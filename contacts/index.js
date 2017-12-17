@@ -83,4 +83,29 @@ router.put('/contactList/:id', (req,res)=>{
     res.json(tmp)
 })
 
+//ค้นหาจากชื่อ(100%)
+//Search contactlist by firstname
+router.get('/contactList/:firstname', (req,res)=>{
+    let firstname = req.params.firstname
+    var cont = []
+
+    for(var i=0; i<contactList.length;i++)
+    {
+        if(firstname === contactList[i].name)
+        {
+            cont.push(contactList[i])
+        }
+    }
+    if(cont.length <= 0){
+        cont.push("Not found!!!")
+    }
+    res.json(cont)        
+})
+
+//แสดงข้อมูลทั้งหมด
+//Show all contactList
+router.get('/contactList', (req,res)=>{
+    res.json(contactList)
+})
+
 module.exports = router
